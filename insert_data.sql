@@ -9,6 +9,7 @@ INSERT INTO theme (theme_id, theme_name) VALUES
 (7, 'Science'),
 (8, 'Enfance et jeunesse');
 
+
 -- Insertion auteurs
 
 INSERT INTO author (author_id, first_name, last_name, birth_year) VALUES
