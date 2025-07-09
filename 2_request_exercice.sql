@@ -39,7 +39,9 @@ LEFT JOIN customer_order cu ON b.book_id = cu.book_id
 WHERE cu.book_id IS NULL
 
 -- 8. Affichez le chiffre d’affaires total généré par chaque auteur (somme des prix des livres commandés).
-SELECT a.author_id, SUM(cu.total_amount)
-FROM author a
-JOIN customer_id cu ON a.author_id = 
+SELECT a.first_name, a.last_name, SUM(b.price) AS ca
+FROM customer_order cu
+JOIN book b ON cu.book_id = b.book_id
+JOIN author a ON b.author_id = a.author_id
+GROUP BY a.author_id, a.first_name, a.last_name
 
