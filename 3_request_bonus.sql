@@ -9,7 +9,12 @@ GROUP BY a.author_id, a.first_name, a.last_name
 ORDER BY ca DESC LIMIT 3
 
 -- 2. Calculer le total des ventes par thème de livre, classé du plus au moins vendu (en montant).
-
+SELECT t.theme_name, SUM(cu.order_id) AS ventes_totales
+FROM customer_order cu
+JOIN theme t ON b.theme_id = t.theme_id
+JOIN book b ON b.theme_id = t.theme_id
+GROUP BY t.theme_name
+ORDER BY ventes_totales DESC
 
 -- 3. Afficher pour chaque mois de l’année 2024 le nombre de commandes passées et le chiffre d’affaires total.
 
