@@ -25,9 +25,9 @@ ORDER BY month ASC
 
 
 -- 4. Pour chaque auteur, calculer la moyenne des notes des livres écrits, y compris les auteurs dont livres n’ont pas encore d’avis (afficher NULL dans ce cas).
-SELECT a.author_id, a.first_name, a.last_name, 
-AVG(r.rating) AS avg_rating,
-COUNT(r.review_id) AS nb_review
+SELECT a.author_id,
+    CONCAT(a.first_name, ' ', a.last_name) AS full_name, 
+    AVG(r.rating) AS avg_rating
 FROM book b
 JOIN author a ON a.author_id = b.author_id
 LEFT JOIN review r ON r.book_id = b.book_id
